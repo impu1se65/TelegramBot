@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Telegram.Bot" Version="14.8.0" />
   </ItemGroup>
 
   <ItemGroup>
