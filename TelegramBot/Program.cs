@@ -27,7 +27,7 @@ namespace TelegramBot
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Path.Combine(AppContext.BaseDirectory))
-                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile("appSettings.json", optional: false)
                 .Build();
 
             serviceCollection.AddScoped<IConfiguration>(cfg => configuration);
