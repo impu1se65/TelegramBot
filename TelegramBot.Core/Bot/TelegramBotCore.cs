@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using TelegramBot.Core.Interfaces;
+using TelegramBot.Infrastucture.Contracts;
 
-namespace TelegramBot.Core.Core
+namespace TelegramBot.Core.Bot
 {
     public class TelegramBotCore : ITelegramBotCore
     {

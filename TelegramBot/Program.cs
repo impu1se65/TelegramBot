@@ -4,8 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using TelegramBot.Core;
-using TelegramBot.Core.Core;
+using TelegramBot.Core.Bot;
 using TelegramBot.Core.Interfaces;
+using TelegramBot.Infrastucture.Contracts;
 
 namespace TelegramBot
 {

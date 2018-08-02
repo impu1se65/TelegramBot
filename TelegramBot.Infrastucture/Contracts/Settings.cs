@@ -1,4 +1,4 @@
-﻿namespace TelegramBot.Core
+﻿namespace TelegramBot.Infrastucture.Contracts
 {
     public class Settings
     {
