@@ -2,13 +2,13 @@
 
 namespace TelegramBot.Infrastucture.Services
 {
-    public class WeatherPhraseDecorator : IWeatherPhraseDecorator
+    public class WeatherPhraseFacade : IWeatherPhraseFacade
     {
         private readonly IWeatherService _weatherService;
 
         private readonly IPhraseService _phraseService;
 
-        public WeatherPhraseDecorator(IWeatherService weatherService, IPhraseService phraseService)
+        public WeatherPhraseFacade(IWeatherService weatherService, IPhraseService phraseService)
         {
             _weatherService = weatherService;
             _phraseService = phraseService;

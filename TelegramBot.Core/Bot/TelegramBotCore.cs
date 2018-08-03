@@ -15,11 +15,11 @@ namespace TelegramBot.Core.Bot
         private readonly Settings _settings;
         private readonly ITelegramBotClient _client;
 
-        public TelegramBotCore(IWeatherPhraseDecorator weatherPhraseDecorator, Settings settings, ITelegramBotClient client)
+        public TelegramBotCore(IWeatherPhraseDecorator weatherPhraseDecorator, Settings settings, ITelegramBotClientFactory factory)
         {
             _weatherPhraseDecorator = weatherPhraseDecorator;
             _settings = settings;
-            _client = client;
+            _client = factory.GeTelegramBotClient(settings.TelegramBotToken);
         }
 
         public void Run()

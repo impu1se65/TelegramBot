@@ -1,12 +1,13 @@
 ﻿using Telegram.Bot;
+using TelegramBot.Infrastucture.Interfaces;
 
 namespace TelegramBot.Infrastucture.Services
 {
-    public static class TelegramBotClientFactory
+    public class TelegramBotClientFactory : ITelegramBotClientFactory
     {
-        public static ITelegramBotClient GetClient(string token)
+        public TelegramBotClient GeTelegramBotClient(string token)
         {
-           return new TelegramBotClient(token);
+            return new TelegramBotClient(token);
         }
     }
 }
