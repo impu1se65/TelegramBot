@@ -22,8 +22,7 @@ namespace TelegramBot
             StartUp.ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var appService = serviceProvider.GetService<ITelegramBotCore>();
-            var logger = serviceProvider.GetService<ILogger<Program>>();
-            logger.LogInformation("eqweqwe");
+
             appService.Run();
 
             Console.ReadKey();
