@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TelegramBot.Core.Bot;
 using TelegramBot.Core.Interfaces;
@@ -15,14 +16,6 @@ namespace TelegramBot
 {
     public class StartUp
     {
-        public void Configure(IApplicationBuilder builder)
-        {
-            builder.Run(appContext =>
-            {
-                return appContext.Response.WriteAsync("App run");
-            });
-        }
-
         public static void ConfigureServices(IServiceCollection serviceCollection)
         {
             var configuration = new ConfigurationBuilder()
@@ -30,6 +23,11 @@ namespace TelegramBot
                 .AddJsonFile("appSettings.json", optional: false)
                 .Build();
 
+            serviceCollection.AddLogging(config =>
+            {
+                config.AddConsole().SetMinimumLevel(LogLevel.Information);
+                config.AddFilter("Microsoft", LogLevel.Error);
+            });
             serviceCollection.AddScoped<IConfiguration>(cfg => configuration);
             serviceCollection.AddOptions();
             serviceCollection.AddScoped<IConfiguration>(cfg => configuration);

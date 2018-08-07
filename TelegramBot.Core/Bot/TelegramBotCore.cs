@@ -19,12 +19,12 @@ namespace TelegramBot.Core.Bot
         {
             _weatherPhraseFacade = weatherPhraseFacade;
             _settings = settings;
-            _client = factory.GeTelegramBotClient(settings.TelegramBotToken);
+            //_client = factory.GeTelegramBotClient(settings.TelegramBotToken);
         }
 
         public void Run()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("some thing");
         }
     }
 }
