@@ -1,8 +1,9 @@
 ﻿using TelegramBot.Infrastucture.Contracts;
+using TelegramBot.Infrastucture.Interfaces;
 
 namespace TelegramBot.Infrastucture.Services
 {
-    public class PhraseService
+    public class PhraseService : IPhraseService
     {
         private readonly Settings _settings;
 
