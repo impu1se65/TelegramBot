@@ -1,16 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Reflection.Metadata;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using TelegramBot.Core;
-using TelegramBot.Core.Bot;
 using TelegramBot.Core.Interfaces;
-using TelegramBot.Infrastucture.Contracts;
 
 namespace TelegramBot
 {
