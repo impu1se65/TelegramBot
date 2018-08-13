@@ -13,14 +13,14 @@ namespace TelegramBot.Core.Bot
     public class TelegramBotCore : ITelegramBotCore
     {
         private readonly IWeatherPhraseFacade _weatherPhraseFacade;
-        private readonly Settings _settings;
+        private readonly TelegramBotToken _token;
         private readonly ITelegramBotClient _client;
         private readonly ILogger _logger;
 
-        public TelegramBotCore(IWeatherPhraseFacade weatherPhraseFacade, Settings settings, ITelegramBotClientFactory factory, ILogger<TelegramBotCore> logger)
+        public TelegramBotCore(IWeatherPhraseFacade weatherPhraseFacade, TelegramBotToken token, ITelegramBotClientFactory factory, ILogger<TelegramBotCore> logger)
         {
             _weatherPhraseFacade = weatherPhraseFacade;
-            _settings = settings;
+            _token = token;
             _logger = logger;
             //_client = factory.GeTelegramBotClient(settings.TelegramBotToken);
         }
