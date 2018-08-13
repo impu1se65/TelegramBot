@@ -45,6 +45,7 @@ namespace TelegramBot.Infrastucture.Services
             };
             var response =
                 await  _client.GetForecast(address.Coordinates.Latitude, address.Coordinates.Longitude, forecastOptions);
+
             var forecastResult = response.Response;
             var  forecast = new ForecastModel
             {

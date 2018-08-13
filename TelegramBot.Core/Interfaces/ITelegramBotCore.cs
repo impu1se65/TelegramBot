@@ -1,7 +1,11 @@
-﻿namespace TelegramBot.Core.Interfaces
+﻿using Telegram.Bot.Types;
+
+namespace TelegramBot.Core.Interfaces
 {
     public interface ITelegramBotCore
     {
-        void Run();
+        void StartReceiving();
+
+        void StopReceiving();
     }
 }
