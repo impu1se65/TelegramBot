@@ -24,7 +24,7 @@ namespace TelegramBot.Infrastucture.Services
         public async Task<string> GetForecast(string query, string userName)
         {
             var phraseServiceResult =  await  _phraseService.MakeRequest(query);
-            if (phraseServiceResult.TopIntent == WeatherEntityName && phraseServiceResult.Score > 0.64)
+            if (phraseServiceResult.TopIntent == WeatherEntityName && phraseServiceResult.Score > MinPhraseScore)
             {
                 var weatherServiceResult =
                     await _weatherService.GetWeatherNow(phraseServiceResult.Location, phraseServiceResult.Date);

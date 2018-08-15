@@ -20,6 +20,7 @@ namespace TelegramBot.Core.Bot
         private readonly ITelegramBotClient _client;
         private readonly ILogger _logger;
         private readonly User _user;
+        private string _previousMessage = string.Empty;
         private const string IndicateStartPhrase = "Hey bot";
 
         public TelegramBotCore(
@@ -61,15 +62,17 @@ namespace TelegramBot.Core.Bot
             var message = messageEventArgs.Message;
             if (message == null || message.Type != MessageType.Text) return;
 
+
             if (message.Text.StartsWith(IndicateStartPhrase))
             {
+                _previousMessage = message.Text;
                 var result = await _weatherPhraseFacade.GetForecast(message.Text, _user.Username);
 
                 await _client.SendTextMessageAsync(message.Chat.Id, result);
             }
         }
 
-        private  async void BotOnReceiveError(object sender, ReceiveErrorEventArgs receiveErrorEventArgs)
+        private void BotOnReceiveError(object sender, ReceiveErrorEventArgs receiveErrorEventArgs)
         {
            _logger.LogError(
                $"Received error: { receiveErrorEventArgs.ApiRequestException.ErrorCode} -" +
