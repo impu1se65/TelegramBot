@@ -24,7 +24,7 @@ namespace TelegramBot.Infrastucture.Services
             _geocoder = geocoder;
         }
 
-        public async Task<ForecastModel> GetWeatherNow(string city, DateTime? date)
+        public async Task<ForecastModel> GetWeather(string city, DateTime? date)
         {
             if (string.IsNullOrEmpty(city)) // todo: think about it
             {
@@ -36,8 +36,8 @@ namespace TelegramBot.Infrastucture.Services
                 date = DateTime.UtcNow;
             }
 
-            var addresses = await _geocoder.GeocodeAsync(city);
-            var address = addresses.First();
+
+            var address = GetAddressFromString(city);
             var forecastOptions = new DarkSkyService.OptionalParameters
             {
                 MeasurementUnits = "si",
@@ -57,6 +57,14 @@ namespace TelegramBot.Infrastucture.Services
             };
 
             return await Task.FromResult(forecast);
+        }
+
+        private Address GetAddressFromString(string city)
+        {
+            var addresses = _geocoder.GeocodeAsync(city).Result;
+            var address = addresses.First();
+
+            return address;
         }
     }
 }

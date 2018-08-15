@@ -66,7 +66,7 @@ namespace TelegramBot.Core.Bot
             if (message.Text.StartsWith(IndicateStartPhrase))
             {
                 _previousMessage = message.Text;
-                var result = await _weatherPhraseFacade.GetForecast(message.Text, _user.Username);
+                var result = await _weatherPhraseFacade.GetForecast(message.Text, message.From.Username);
 
                 await _client.SendTextMessageAsync(message.Chat.Id, result);
             }

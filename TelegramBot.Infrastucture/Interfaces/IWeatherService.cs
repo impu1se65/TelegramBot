@@ -8,6 +8,6 @@ namespace TelegramBot.Infrastucture.Interfaces
 {
     public interface IWeatherService
     {
-        Task<ForecastModel> GetWeatherNow(string city, DateTime? date);
+        Task<ForecastModel> GetWeather(string city, DateTime? date);
     }
 }

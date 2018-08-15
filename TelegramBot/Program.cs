@@ -13,9 +13,11 @@ namespace TelegramBot
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var appService = serviceProvider.GetService<ITelegramBotCore>();
 
-            appService.Run();
+            appService.StartReceiving();
 
             Console.ReadKey();
+
+            appService.StopReceiving();
         }
     }
 }

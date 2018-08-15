@@ -27,7 +27,7 @@ namespace TelegramBot.Infrastucture.Services
             if (phraseServiceResult.TopIntent == WeatherEntityName && phraseServiceResult.Score > MinPhraseScore)
             {
                 var weatherServiceResult =
-                    await _weatherService.GetWeatherNow(phraseServiceResult.Location, phraseServiceResult.Date);
+                    await _weatherService.GetWeather(phraseServiceResult.Location, phraseServiceResult.Date);
 
                 return BuildResponse(weatherServiceResult, phraseServiceResult, userName);
             }
@@ -40,8 +40,8 @@ namespace TelegramBot.Infrastucture.Services
             var result =    $"Hey, {userName}  {Environment.NewLine}" +
                             $"Weather in  {model.Location}  {Environment.NewLine}" +
                             $"{phraseResult.Date:dd.MM.yyyy} {Environment.NewLine}" +
-                            $"Temperature:  {model.Temperature}  {Environment.NewLine}" +
-                            $" Wind speed:  {model.WindSpeed} {Environment.NewLine} Summary: {model.Summary}";
+                            $"Temperature:  {model.Temperature} {Environment.NewLine}" +
+                            $"Wind speed:  {model.WindSpeed} {Environment.NewLine} Summary: {model.Summary}";
 
             return result;
         }

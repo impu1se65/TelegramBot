@@ -42,6 +42,8 @@ namespace TelegramBot
             var luisSettings = configuration.GetSection(nameof(LuisSettings)).Get<LuisSettings>();
             serviceCollection.AddSingleton(luisSettings);
 
+            serviceCollection.AddScoped<IJsonConvertWrapper, JsonConvertWrapper>();
+            serviceCollection.AddScoped<Infrastucture.Interfaces.IHttpClient, HttpClientWrapper>();
             serviceCollection.AddScoped<ITelegramBotCore, TelegramBotCore>();
             serviceCollection.AddScoped<IDarkSkyService>(
                 darkSky => new DarkSkyServiceWrapper(new DarkSkyService(forecastSettings.DarkSkyApiToken)));
