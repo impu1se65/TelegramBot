@@ -22,6 +22,8 @@ namespace TelegramBot.Core.Bot
         private readonly User _user;
         private string _previousMessage = string.Empty;
         private const string IndicateStartPhrase = "Hey bot";
+        private const string DontUnderstandError = "I am dont understand, please repeat valid weather request. Sorry," +
+                                                   "but i understand only weather requests";
 
         public TelegramBotCore(
             IWeatherPhraseFacade weatherPhraseFacade, 
@@ -69,6 +71,10 @@ namespace TelegramBot.Core.Bot
                 var result = await _weatherPhraseFacade.GetForecast(message.Text, message.From.Username);
 
                 await _client.SendTextMessageAsync(message.Chat.Id, result);
+            }
+            else
+            {
+                await _client.SendTextMessageAsync(message.Chat.Id, DontUnderstandError);
             }
         }
 
