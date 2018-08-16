@@ -12,7 +12,6 @@ namespace TelegramBot.Core.Bot
     public class TelegramBotCore : ITelegramBotCore
     {
         private readonly IWeatherPhraseFacade _weatherPhraseFacade;
-        private readonly TelegramBotToken _token;
         private readonly ITelegramBotClient _client;
         private readonly ILogger _logger;
         private readonly User _user;
@@ -30,7 +29,6 @@ namespace TelegramBot.Core.Bot
             ILogger<TelegramBotCore> logger)
         {
             _weatherPhraseFacade = weatherPhraseFacade;
-            _token = token;
             _logger = logger;
             _client = factory.GeTelegramBotClient(token.Token);
             _user = _client.GetMeAsync().Result;

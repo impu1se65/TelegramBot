@@ -41,7 +41,7 @@ namespace TelegramBot
 
             serviceCollection.AddScoped<IJsonConvertWrapper, JsonConvertWrapper>();
             serviceCollection.AddScoped<Infrastucture.Interfaces.IHttpClient, HttpClientWrapper>();
-            serviceCollection.AddScoped<ITelegramBotCore, TelegramBotCore>();
+            serviceCollection.AddSingleton<ITelegramBotCore, TelegramBotCore>();
 
             serviceCollection.AddScoped<IDarkSkyService>(
                 darkSky => new DarkSkyServiceWrapper(new DarkSkyService(forecastSettings.DarkSkyApiToken)));
@@ -50,7 +50,7 @@ namespace TelegramBot
             serviceCollection.AddScoped<IWeatherService, WeatherService>();
             serviceCollection.AddScoped<IPhraseService, PhraseService>();
             serviceCollection.AddScoped<IWeatherPhraseFacade, WeatherPhraseFacade>();
-            serviceCollection.AddScoped<ITelegramBotClientFactory, TelegramBotClientFactory>();
+            serviceCollection.AddSingleton<ITelegramBotClientFactory, TelegramBotClientFactory>();
         }
     }
 }
