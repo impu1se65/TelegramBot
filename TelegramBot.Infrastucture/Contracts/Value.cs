@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TelegramBot.Infrastucture.Contracts
+﻿namespace TelegramBot.Infrastucture.Contracts
 {
     public class ValueModel
     {

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-using DarkSky.Models;
 using DarkSky.Services;
 using Geocoding;
-using Geocoding.Google;
-using NodaTime.TimeZones;
 using TelegramBot.Infrastucture.Contracts;
 using TelegramBot.Infrastucture.Interfaces;
 
@@ -49,7 +45,6 @@ namespace TelegramBot.Infrastucture.Services
             var forecastResult = response.Response;
             var  forecast = new ForecastModel
             {
-                //Temperature = (5 / 9 * (forecastResult.Currently.Temperature - 32)).ToString(),
                 Temperature = forecastResult.Currently.Temperature.ToString(),
                 WindSpeed = forecastResult.Currently.WindSpeed.ToString(),
                 Summary = forecastResult.Currently.Summary,

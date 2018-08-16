@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
-using Newtonsoft.Json;
 using TelegramBot.Infrastucture.Contracts;
 using TelegramBot.Infrastucture.Interfaces;
-using TelegramBot.Infrastucture.Utills;
 
 namespace TelegramBot.Infrastucture.Services
 {

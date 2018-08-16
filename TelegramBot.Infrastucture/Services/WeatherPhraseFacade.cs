@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Text;
 using System.Threading.Tasks;
-using Telegram.Bot.Types;
 using TelegramBot.Infrastucture.Contracts;
 using TelegramBot.Infrastucture.Interfaces;
 
@@ -23,10 +21,10 @@ namespace TelegramBot.Infrastucture.Services
 
         public async Task<string> GetForecast(string query, string userName)
         {
-            var phraseServiceResult =  await  _phraseService.MakeRequest(query);
+            var phraseServiceResult = await _phraseService.MakeRequest(query);
             if (phraseServiceResult.TopIntent == WeatherEntityName && phraseServiceResult.Score > MinPhraseScore)
             {
-                var weatherServiceResult =
+                var weatherServiceResult = 
                     await _weatherService.GetWeather(phraseServiceResult.Location, phraseServiceResult.Date);
 
                 return BuildResponse(weatherServiceResult, phraseServiceResult, userName);
