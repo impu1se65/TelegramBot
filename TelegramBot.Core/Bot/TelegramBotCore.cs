@@ -17,6 +17,8 @@ namespace TelegramBot.Core.Bot
         private readonly ILogger _logger;
         private readonly User _user;
         private string _previousMessage = string.Empty;
+        private const string UserInput = "User message: ";
+        private const string BotResponse = "Bot response: ";
         private const string IndicateStartPhrase = "Hey bot";
         private const string DontUnderstandError = "I am dont understand, please repeat valid weather request. Sorry," +
                                                    "but i understand only weather requests";
@@ -60,16 +62,20 @@ namespace TelegramBot.Core.Bot
             var message = messageEventArgs.Message;
             if (message == null || message.Type != MessageType.Text) return;
 
-
+            LogMessages(message.Text, UserInput);
             if (message.Text.StartsWith(IndicateStartPhrase))
             {
                 _previousMessage = message.Text;
+
                 var result = await _weatherPhraseFacade.GetForecast(message.Text, message.From.Username);
+                LogMessages(result, BotResponse);
 
                 await _client.SendTextMessageAsync(message.Chat.Id, result);
             }
             else
             {
+                LogMessages(DontUnderstandError, BotResponse);
+
                 await _client.SendTextMessageAsync(message.Chat.Id, DontUnderstandError);
             }
         }
@@ -80,5 +86,11 @@ namespace TelegramBot.Core.Bot
                $"Received error: { receiveErrorEventArgs.ApiRequestException.ErrorCode} -" +
                $" { receiveErrorEventArgs.ApiRequestException.Message}");
         }
+
+        private void LogMessages(string message, string input)
+        {
+            _logger.LogInformation($"{input}: {message}");
+        }
+
     }
 }

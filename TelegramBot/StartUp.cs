@@ -42,9 +42,11 @@ namespace TelegramBot
             serviceCollection.AddScoped<IJsonConvertWrapper, JsonConvertWrapper>();
             serviceCollection.AddScoped<Infrastucture.Interfaces.IHttpClient, HttpClientWrapper>();
             serviceCollection.AddScoped<ITelegramBotCore, TelegramBotCore>();
+
             serviceCollection.AddScoped<IDarkSkyService>(
                 darkSky => new DarkSkyServiceWrapper(new DarkSkyService(forecastSettings.DarkSkyApiToken)));
             serviceCollection.AddScoped<IGeocoder>(geocoder => new GoogleGeocoder(forecastSettings.GoogleApiToken));
+
             serviceCollection.AddScoped<IWeatherService, WeatherService>();
             serviceCollection.AddScoped<IPhraseService, PhraseService>();
             serviceCollection.AddScoped<IWeatherPhraseFacade, WeatherPhraseFacade>();
