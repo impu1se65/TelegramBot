@@ -2,6 +2,8 @@
 {
     public interface ITelegramBotCore
     {
-        void Run();
+        void StartReceiving();
+
+        void StopReceiving();
     }
 }
