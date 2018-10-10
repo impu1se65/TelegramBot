@@ -18,7 +18,7 @@ namespace TelegramBot.Core.Bot
         private string _previousMessage = string.Empty;
         private const string UserInput = "User message: ";
         private const string BotResponse = "Bot response: ";
-        private const string IndicateStartPhrase = "Hey bot";
+        private const string IndicateStartPhrase = "Hey bot,";
         private const string DontUnderstandError = "I am dont understand, please repeat valid weather request. Sorry," +
                                                    "but i understand only weather requests";
 
