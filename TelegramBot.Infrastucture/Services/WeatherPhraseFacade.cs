@@ -11,7 +11,7 @@ namespace TelegramBot.Infrastucture.Services
         private readonly IPhraseService _phraseService;
         private const double MinPhraseScore = 0.64;
         private const string WeatherEntityName = "Weather.GetForecast";
-        private const string DontUnderstandError = "I am dont understand, please repeat valid weather request";
+        private const string DontUnderstandError = "I`m don`t understand you, please provide valid weather request";
 
         public WeatherPhraseFacade(IWeatherService weatherService, IPhraseService phraseService)
         {
@@ -37,9 +37,9 @@ namespace TelegramBot.Infrastucture.Services
         {
             var result =    $"Hey, {userName}  {Environment.NewLine}" +
                             $"Weather in  {model.Location}  {Environment.NewLine}" +
-                            $"{phraseResult.Date:dd.MM.yyyy} {Environment.NewLine}" +
-                            $"Temperature:  {model.Temperature} {Environment.NewLine}" +
-                            $"Wind speed:  {model.WindSpeed} {Environment.NewLine} Summary: {model.Summary}";
+                            $"Date: {phraseResult.Date:dd.MM.yyyy} {Environment.NewLine}" +
+                            $"Temperature:  {model.Temperature} °C{Environment.NewLine}" +
+                            $"Wind speed:  {model.WindSpeed} mph{Environment.NewLine} Summary: {model.Summary}";
 
             return result;
         }

@@ -55,10 +55,12 @@ namespace TelegramBot.Core.Bot
             _client.OnReceiveError += BotOnReceiveError;
         }
 
-        private  async void BotOnMessageReceived(object sender, MessageEventArgs messageEventArgs)
+        private async void BotOnMessageReceived(object sender, MessageEventArgs messageEventArgs)
         {
             var message = messageEventArgs.Message;
             if (message == null || message.Type != MessageType.Text) return;
+
+            await _client.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
 
             LogMessages(message.Text, UserInput);
             if (message.Text.StartsWith(IndicateStartPhrase))
